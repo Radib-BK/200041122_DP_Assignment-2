@@ -2,11 +2,13 @@ package com.aov.factories;
 
 import com.aov.builders.*;
 import com.aov.village.*;
+import com.aov.colors.*;
 
 /**
  * BrickVillageFactory - Concrete Factory Pattern implementation
  * Creates brick-style village components: Brick House + Mango Tree + Swimming Pool
  * Part of Abstract Factory Pattern - creates one family of related objects
+ * Uses Bridge Pattern for colored shapes
  */
 public class BrickVillageFactory extends AbstractVillageFactory {
     
@@ -21,32 +23,32 @@ public class BrickVillageFactory extends AbstractVillageFactory {
     }
     
     /**
-     * Create a brick house using Builder pattern
+     * Create a brick house using Builder pattern with colors
      * @return VillageComponent representing a brick house
      */
     @Override
     public VillageComponent createHouse() {
-        // Use builder to create brick house with rectangle + triangle
-        return houseBuilder.buildTypicalHouse("Brick House");
+        // Brick house: white base + red roof
+        return houseBuilder.buildTypicalHouse("Brick House", new White(), new Red());
     }
     
     /**
-     * Create a mango tree using Builder pattern
+     * Create a mango tree using Builder pattern with colors
      * @return VillageComponent representing a mango tree
      */
     @Override
     public VillageComponent createTree() {
-        // Use builder to create mango tree with rectangle trunk + circle crown
-        return treeBuilder.buildTypicalTree("Mango Tree");
+        // Mango tree: brown trunk + green crown
+        return treeBuilder.buildTypicalTree("Mango Tree", new Brown(), new Green());
     }
     
     /**
-     * Create a swimming pool using Builder pattern
+     * Create a swimming pool using Builder pattern with colors
      * @return VillageComponent representing a swimming pool
      */
     @Override
     public VillageComponent createWaterSource() {
-        // Use builder to create rectangular swimming pool
-        return waterSourceBuilder.buildRectangularWaterSource("Swimming Pool");
+        // Swimming pool: blue water
+        return waterSourceBuilder.buildRectangularWaterSource("Swimming Pool", new Blue());
     }
 }

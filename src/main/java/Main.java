@@ -14,6 +14,7 @@ import com.aov.village.*;
  * 1. Composite Pattern: Village contains VillageComponents (House, Tree, WaterSource)
  * 2. Builder Pattern: Components are built from shapes using specific builders
  * 3. Abstract Factory Pattern: BrickVillageFactory and MudVillageFactory create families of objects
+ * 4. Bridge Pattern: Shapes are separated from their color implementations
  */
 public class Main {
     
@@ -84,7 +85,6 @@ public class Main {
         // Composite Pattern: Display the village and all its components
         village.display();
         
-        displayPatternInfo();
     }
     
     /**

@@ -19,7 +19,10 @@ public class Tree implements VillageComponent {
     
     @Override
     public void display() {
-        System.out.println("  " + treeType + " built with " + getShapesList());
+        System.out.println("  " + treeType + ":");
+        for (Shape shape : shapes) {
+            System.out.println("    " + shape.getColoredDescription() + ".");
+        }
     }
     
     @Override

@@ -28,14 +28,16 @@ public class HouseBuilder extends VillageComponentBuilder {
     }
     
     /**
-     * Convenience method to create a typical house structure
+     * Convenience method to create a typical house structure with colors
      * @param houseType Type of house
+     * @param baseColor Color for the house base
+     * @param roofColor Color for the roof
      * @return Built house component
      */
-    public VillageComponent buildTypicalHouse(String houseType) {
+    public VillageComponent buildTypicalHouse(String houseType, com.aov.colors.Color baseColor, com.aov.colors.Color roofColor) {
         // Typical house: rectangle base + triangle roof
-        addShape(new Rectangle(10.0, 8.0)) // House base
-            .addShape(new Triangle(10.0, 4.0)); // Roof
+        addShape(new Rectangle(10.0, 8.0, baseColor)) // House base
+            .addShape(new Triangle(10.0, 4.0, roofColor)); // Roof
         return build(houseType);
     }
 }

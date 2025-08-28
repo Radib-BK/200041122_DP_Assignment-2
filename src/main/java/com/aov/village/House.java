@@ -19,7 +19,10 @@ public class House implements VillageComponent {
     
     @Override
     public void display() {
-        System.out.println("  " + houseType + " built with " + getShapesList());
+        System.out.println("  " + houseType + ":");
+        for (Shape shape : shapes) {
+            System.out.println("    " + shape.getColoredDescription() + ".");
+        }
     }
     
     @Override

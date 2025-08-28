@@ -1,21 +1,6 @@
 # Age of Villagers - Village Creator
 
-A Java CLI application demonstrating **Composite**, **Builder**, and **Abstract Factory** design patterns through village creation in Age of Villagers (AoV).
-
-## Project Structure
-
-```
-200041122_DP_Assignment-2/
-├── src/main/java/
-│   ├── Main.java             # Main CLI application (entry point)
-│   └── com/aov/
-│       ├── shapes/           # Shape classes (Rectangle, Triangle, Circle)
-│       ├── village/          # Village components (House, Tree, WaterSource, Village)
-│       ├── builders/         # Builder pattern implementations
-│       └── factories/        # Abstract Factory pattern implementations
-├── build/classes/            # Compiled .class files (organized by package)
-└── README.md                 # This file
-```
+A Java CLI application demonstrating **Composite**, **Builder**, **Abstract Factory**, and **Bridge** design patterns through village creation in Age of Villagers (AoV).
 
 ## Design Patterns Implemented
 
@@ -36,6 +21,12 @@ A Java CLI application demonstrating **Composite**, **Builder**, and **Abstract 
 - Two concrete factories:
   - **BrickVillageFactory** → Brick House + Mango Tree + Swimming Pool
   - **MudVillageFactory** → Mud House + Banana Tree + Pond
+
+### 4. Bridge Pattern
+- **Shape** interface acts as abstraction with **Color** interface as implementor
+- Separates shape geometry from color implementation
+- Allows independent variation of shapes and colors
+- **Rectangle**, **Triangle**, **Circle** use **Red**, **White**, **Green**, **Brown**, **Blue** colors
 
 ## Running Instructions
 
@@ -66,14 +57,15 @@ Creating Brick Village...
 
 === Brick Village ===
 Village contains:
-  Brick House built with [Rectangle, Triangle]
-  Mango Tree built with [Rectangle, Circle]
-  Swimming Pool built with [Rectangle]
+  Brick House:
+    A white rectangle.
+    A red triangle.
+  Mango Tree:
+    A brown rectangle.
+    A green circle.
+  Swimming Pool:
+    A blue rectangle.
 
-=== Design Patterns Demonstrated ===
-1. Composite Pattern: Village contains multiple VillageComponents
-2. Builder Pattern: Components built from geometric shapes
-3. Abstract Factory: Different factories create different families of objects
 ```
 
 ## Package Organization
@@ -82,8 +74,12 @@ Village contains:
 - **Main.java** - CLI application entry point (no package, located in `src/main/java/`)
 
 ### Shapes Package (`com.aov.shapes`)
-- **Shape** - Interface for all geometric shapes
-- **Rectangle**, **Triangle**, **Circle** - Concrete shape implementations
+- **Shape** - Interface for all geometric shapes (Bridge abstraction)
+- **Rectangle**, **Triangle**, **Circle** - Concrete shape implementations with color support
+
+### Colors Package (`com.aov.colors`)
+- **Color** - Interface for color implementations (Bridge implementor)
+- **Red**, **White**, **Green**, **Brown**, **Blue** - Concrete color implementations
 
 ### Village Package (`com.aov.village`)
 - **VillageComponent** - Interface for village components (Composite Pattern)
@@ -114,10 +110,17 @@ src/main/java/
 ├── Main.java                          # Entry point (no package)
 └── com/aov/
     ├── shapes/
-    │   ├── Shape.java                  # Interface
-    │   ├── Rectangle.java              # Concrete shape
-    │   ├── Triangle.java               # Concrete shape
-    │   └── Circle.java                 # Concrete shape
+    │   ├── Shape.java                  # Interface (Bridge abstraction)
+    │   ├── Rectangle.java              # Concrete shape with color
+    │   ├── Triangle.java               # Concrete shape with color
+    │   └── Circle.java                 # Concrete shape with color
+    ├── colors/
+    │   ├── Color.java                  # Interface (Bridge implementor)
+    │   ├── Red.java                    # Concrete color
+    │   ├── White.java                  # Concrete color
+    │   ├── Green.java                  # Concrete color
+    │   ├── Brown.java                  # Concrete color
+    │   └── Blue.java                   # Concrete color
     ├── village/
     │   ├── VillageComponent.java       # Component interface
     │   ├── House.java                  # Leaf component
@@ -140,19 +143,28 @@ src/main/java/
 build/classes/
 ├── Main.class                          # Entry point
 └── com/aov/
-    ├── shapes/                         # Shape classes
+    ├── shapes/                         # Shape classes (Bridge abstraction)
+    ├── colors/                         # Color classes (Bridge implementor)
     ├── village/                        # Village components
     ├── builders/                       # Builder classes
     └── factories/                      # Factory classes
 ```
 
-## Requirements Met
 
-✅ Plain Java CLI project (no Gradle, no Maven)  
-✅ Composite Pattern - Village contains VillageComponents  
-✅ Builder Pattern - Components built from shapes  
-✅ Abstract Factory Pattern - Two factory families  
-✅ Proper package structure with organized .class files in build/classes/  
-✅ Clean root directory (no stray .java/.class files)  
-✅ Clear comments explaining pattern usage  
-✅ Updated running instructions for new structure  
+## Key Features
+
+### Enhanced Visual Output
+- **Step-by-step construction**: Shows each colored shape as it's added
+- **Bridge Pattern demonstration**: Same shapes with different colors for different village types
+- **Intuitive format**: "A [color] [shape]." for each component
+
+### Village Type Differences
+- **Brick Village**: White house base + red roof, brown tree trunk + green crown, blue swimming pool
+- **Mud Village**: Brown house (base + roof), green banana tree (trunk + crown), green pond (rectangle)
+
+### Pattern Integration
+- All four design patterns work together seamlessly
+- Bridge pattern allows easy color variations without changing shape logic
+- Factory pattern determines color combinations for each village type
+- Builder pattern constructs components step-by-step with colored shapes
+- Composite pattern displays the complete village structure

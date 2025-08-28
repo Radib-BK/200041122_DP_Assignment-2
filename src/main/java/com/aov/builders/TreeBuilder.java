@@ -28,14 +28,16 @@ public class TreeBuilder extends VillageComponentBuilder {
     }
     
     /**
-     * Convenience method to create a typical tree structure
+     * Convenience method to create a typical tree structure with colors
      * @param treeType Type of tree
+     * @param trunkColor Color for the tree trunk
+     * @param crownColor Color for the tree crown
      * @return Built tree component
      */
-    public VillageComponent buildTypicalTree(String treeType) {
+    public VillageComponent buildTypicalTree(String treeType, com.aov.colors.Color trunkColor, com.aov.colors.Color crownColor) {
         // Typical tree: rectangle trunk + circle crown
-        addShape(new Rectangle(2.0, 6.0)) // Tree trunk
-            .addShape(new Circle(4.0)); // Tree crown
+        addShape(new Rectangle(2.0, 6.0, trunkColor)) // Tree trunk
+            .addShape(new Circle(4.0, crownColor)); // Tree crown
         return build(treeType);
     }
 }

@@ -19,7 +19,10 @@ public class WaterSource implements VillageComponent {
     
     @Override
     public void display() {
-        System.out.println("  " + waterSourceType + " built with " + getShapesList());
+        System.out.println("  " + waterSourceType + ":");
+        for (Shape shape : shapes) {
+            System.out.println("    " + shape.getColoredDescription() + ".");
+        }
     }
     
     @Override
