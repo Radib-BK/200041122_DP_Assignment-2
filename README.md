@@ -94,6 +94,12 @@ Village contains:
 - **AbstractVillageFactory** - Abstract factory interface
 - **BrickVillageFactory**, **MudVillageFactory** - Concrete factory implementations
 
+### Controllers Package (`com.aov.controllers`)
+- **VillageCreator** - Business logic controller for village creation operations
+
+### UI Package (`com.aov.ui`)
+- **CLIHandler** - User interface handler for command-line interactions
+
 ## Features
 
 - **Interactive CLI** with menu-driven interface
@@ -107,7 +113,7 @@ Village contains:
 ### Source Files (`src/main/java/`)
 ```
 src/main/java/
-├── Main.java                          # Entry point (no package)
+├── Main.java                          # Entry point (follows industry standards)
 └── com/aov/
     ├── shapes/
     │   ├── Shape.java                  # Interface (Bridge abstraction)
@@ -132,10 +138,14 @@ src/main/java/
     │   ├── HouseBuilder.java           # Concrete builder
     │   ├── TreeBuilder.java            # Concrete builder
     │   └── WaterSourceBuilder.java     # Concrete builder
-    └── factories/
-        ├── AbstractVillageFactory.java # Abstract factory
-        ├── BrickVillageFactory.java    # Concrete factory
-        └── MudVillageFactory.java      # Concrete factory
+    ├── factories/
+    │   ├── AbstractVillageFactory.java # Abstract factory
+    │   ├── BrickVillageFactory.java    # Concrete factory
+    │   └── MudVillageFactory.java      # Concrete factory
+    ├── controllers/
+    │   └── VillageCreator.java         # Business logic controller
+    └── ui/
+        └── CLIHandler.java             # User interface handler
 ```
 
 ### Compiled Classes (`build/classes/`)
@@ -150,6 +160,23 @@ build/classes/
     └── factories/                      # Factory classes
 ```
 
+## Architecture & Industry Standards
+
+### Clean Architecture Implementation
+- **Main.java**: Pure entry point - only handles application startup
+- **CLIHandler**: Presentation layer - handles user interface and input/output
+- **VillageCreator**: Business logic layer - handles village creation operations
+- **Domain Classes**: Core business entities (Village, VillageComponent, etc.)
+
+### SOLID Principles Applied
+- **Single Responsibility Principle**: Each class has one clear responsibility
+- **Open/Closed Principle**: Easy to extend with new village types or components
+- **Dependency Inversion**: High-level modules don't depend on low-level modules
+
+### Industry Best Practices
+- **Separation of Concerns**: UI logic separated from business logic
+- **Package Organization**: Logical grouping of related classes
+- **Clean Code**: Descriptive names, clear responsibilities, proper documentation
 
 ## Key Features
 
